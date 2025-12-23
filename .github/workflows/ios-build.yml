@@ -14,13 +14,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Installa CocoaPods (se il progetto usa CocoaPods)
+      # Step 2: Elenca gli schemi disponibili
+      - name: List available schemes
+        run: |
+          xcodebuild -project ICO-Visualizer.xcodeproj -list
+
+      # Step 3: Installa CocoaPods (se il progetto usa CocoaPods)
       - name: Install dependencies
         run: |
           brew install cocoapods
           pod install
 
-      # Step 3: Esegui la build dell'app
+      # Step 4: Esegui la build dell'app
       - name: Build the app
         run: |
-          xcodebuild -project ICO-Visualizer.xcodeproj -scheme ICO-Visualizer -verbose
+          xcodebuild -project ICO-Visualizer.xcodeproj -scheme YourCorrectScheme -verbose
