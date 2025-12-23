@@ -25,4 +25,5 @@ jobs:
       # 3. Esegui il build con Xcode
       - name: Build the app
         run: |
-          xcodebuild -workspace YourWorkspace.xcworkspace -scheme YourScheme
+          xcodebuild -workspace YourWorkspace.xcworkspace -scheme YourScheme -verbose
+
