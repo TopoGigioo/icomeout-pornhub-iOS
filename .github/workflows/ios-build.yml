@@ -3,30 +3,24 @@ name: Build iOS App
 on:
   push:
     branches:
-      - main
+      - main  # Modifica questo con il nome del tuo branch, se diverso
 
 jobs:
   build:
     runs-on: macos-latest
 
     steps:
+      # Step 1: Checkout del codice
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Pulisce eventuali vecchie dipendenze
-      - name: Clean CocoaPods dependencies
-        run: |
-          rm -rf Pods
-          pod deintegrate
-          pod install
-
-      # Installa le dipendenze
+      # Step 2: Installa CocoaPods (se il progetto usa CocoaPods)
       - name: Install dependencies
         run: |
           brew install cocoapods
           pod install
 
-      # Esegui la build con Xcode
+      # Step 3: Esegui la build dell'app
       - name: Build the app
         run: |
-          xcodebuild -workspace YourWorkspace.xcworkspace -scheme YourScheme -verbose
+          xcodebuild -project MyApp.xcodeproj -scheme MyApp -verbose
