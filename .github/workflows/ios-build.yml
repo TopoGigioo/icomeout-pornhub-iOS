@@ -3,7 +3,7 @@ name: Build iOS App
 on:
   push:
     branches:
-      - main  # Modifica con il nome del tuo branch, se diverso
+      - main  # O il nome del tuo branch, se diverso
 
 jobs:
   build:
@@ -14,18 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Elenca gli schemi disponibili nel progetto
-      - name: List available schemes
-        run: |
-          xcodebuild -project ICO-Visualizer.xcodeproj -list
-
-      # Step 3: Installa CocoaPods (se il progetto usa CocoaPods)
+      # Step 2: Installa CocoaPods (se il progetto usa CocoaPods)
       - name: Install dependencies
         run: |
           brew install cocoapods
           pod install
 
-      # Step 4: Esegui la build dell'app con lo schema corretto
+      # Step 3: Esegui la build dell'app con lo schema corretto
       - name: Build the app
         run: |
-          xcodebuild -project ICO-Visualizer.xcodeproj -scheme ICO-Visualizer -verbose
+          xcodebuild -project ICO-Visualizer.xcodeproj -scheme ICO-visualizer -verbose
