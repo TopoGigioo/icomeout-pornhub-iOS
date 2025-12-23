@@ -1,0 +1,28 @@
+name: Build iOS App
+
+# Questo workflow si avvia quando fai un push nel branch 'main'
+on:
+  push:
+    branches:
+      - main  # Modifica con il branch che usi, se non è 'main'
+
+jobs:
+  build:
+    # Questo lavoro verrà eseguito su un runner con macOS
+    runs-on: macos-latest
+
+    steps:
+      # 1. Checkout del codice dalla tua repo
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 2. Installa CocoaPods per gestire le dipendenze
+      - name: Install dependencies
+        run: |
+          brew install cocoapods
+          pod install
+
+      # 3. Esegui il build con Xcode
+      - name: Build the app
+        run: |
+          xcodebuild -workspace YourWorkspace.xcworkspace -scheme YourScheme
