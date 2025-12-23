@@ -3,7 +3,7 @@ name: Build iOS App
 on:
   push:
     branches:
-      - main  # Modifica questo con il nome del tuo branch, se diverso
+      - main  # O il nome del tuo branch, se diverso
 
 jobs:
   build:
@@ -23,4 +23,4 @@ jobs:
       # Step 3: Esegui la build dell'app
       - name: Build the app
         run: |
-          xcodebuild -project MyApp.xcodeproj -scheme MyApp -verbose
+          xcodebuild -project ICO-Visualizer.xcodeproj -scheme ICO-Visualizer -verbose
