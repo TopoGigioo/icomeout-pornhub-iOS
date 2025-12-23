@@ -20,7 +20,7 @@ jobs:
           brew install cocoapods
           pod install
 
-      # Step 3: Esegui la build dell'app con lo schema corretto
+      # Step 3: Esegui la build dell'app con la firma automatica
       - name: Build the app
         run: |
-          xcodebuild -project ICO-Visualizer.xcodeproj -scheme ICO-visualizer -verbose
+          xcodebuild -project ICO-Visualizer.xcodeproj -scheme ICO-visualizer -allowProvisioningUpdates -verbose
